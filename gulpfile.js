@@ -5,9 +5,9 @@ const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 var exec = require('child_process').exec;
 
-gulp.task('default', ['webpack', 'styles', 'browser-sync'], () => {
+gulp.task('default', ['styles', 'browser-sync'], () => {
 	gulp.watch('./assets/scss/**/*', ['styles']);
-	gulp.watch('./assets/js/**/*', ['webpack']);
+	// gulp.watch('./assets/js/**/*', ['webpack']);
 	gulp
 		.watch([
 			'./public/**/*',
@@ -18,9 +18,9 @@ gulp.task('default', ['webpack', 'styles', 'browser-sync'], () => {
 		.on('change', reload);
 });
 
-gulp.task('watch-proxy', ['webpack', 'styles', 'browser-sync-proxy'], () => {
+gulp.task('watch-proxy', ['styles', 'browser-sync-proxy'], () => {
 	gulp.watch('./assets/scss/**/*', ['styles']);
-	gulp.watch('./assets/js/**/*', ['webpack']);
+	// gulp.watch('./assets/js/**/*', ['webpack']);
 	gulp
 		.watch([
 			'./public/**/*',
@@ -67,18 +67,18 @@ gulp.task('browser-sync-proxy', function() {
 	});
 });
 
-gulp.task('webpack', cb => {
-	exec('npm run dev:webpack', function(err, stdout, stderr) {
-		console.log(stdout);
-		console.log(stderr);
-		cb(err);
-	});
-});
+// gulp.task('webpack', cb => {
+// 	exec('npm run dev:webpack', function(err, stdout, stderr) {
+// 		console.log(stdout);
+// 		console.log(stderr);
+// 		cb(err);
+// 	});
+// });
 
-gulp.task('build', ['styles'], cb => {
-	exec('npm run build:webpack', function(err, stdout, stderr) {
-		console.log(stdout);
-		console.log(stderr);
-		cb(err);
-	});
-});
+// gulp.task('build', ['styles'], cb => {
+// 	exec('npm run build:webpack', function(err, stdout, stderr) {
+// 		console.log(stdout);
+// 		console.log(stderr);
+// 		cb(err);
+// 	});
+// });
